@@ -1,5 +1,6 @@
 # SnapchatClone-Firebase-SDWebImage-ImageSlideshow
 
+This is a snapchatClone app which users can register with their email, username, and password. They can upload their multiple photos and see in slideshow. The users photos upload are done chronologically. Also, after 24 hours, the photos will be deleted automatically. Moreover, the users can register different accounts and see what other accounts share chronologically. In this app, I benefited from Google Firebase as a back-end server, so all data were saved in Firebase. In addition, I used SDWebImage, ImageSlideshow and KingFisher 3rd party libraries to upload photo to the app and show the photos in slideshow. I used KingFisher 3rd party library because ImageSlideshow work best in this library.
 
 https://user-images.githubusercontent.com/92036779/194827877-9313057f-5bdf-403c-b9d6-40258255a213.mp4
 
