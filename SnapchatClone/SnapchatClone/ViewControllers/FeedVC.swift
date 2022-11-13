@@ -47,35 +47,31 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                 if let date = document.get("date") as? Timestamp {
                                     
                                     if let difference = Calendar.current.dateComponents([.hour], from: date.dateValue(), to: Date()).hour {
-                                        if difference >= 24 {
-                                            self.fireStoreDatabase.collection("Snaps").document(documentId).delete { (error) in
-                                            
+                                             
+                                            if let difference = Calendar.current.dateComponents([.hour], from: date.dateValue(), to: Date()).hour {
+                                                if difference >= 24 {
+                                                    self.fireStoreDatabase.collection("Snaps").document(documentId).delete {
+                                                        error in
+                                                    }
+                                                    
+                                                } else {
+                                                    let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue(), timeDifference: 24 - difference)
+                                                        self.snapArray.append(snap)
+                                                }
                                             }
-                                                
-                                        } else {
-                                            let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue(), timeDifference: 24 - difference )
-                                            self.snapArray.append(snap)
                                         }
-                                       
-                                        
                                     }
-                                    
-                                   
-                                    
                                 }
                             }
                         }
-                        
-                    }
+                    
                     self.tableView.reloadData()
                     
-                }
-                
+                }  
             }
         }
     }
     
-
     func getUserInfo() {
         
         fireStoreDatabase.collection("UserInfo").whereField("email", isEqualTo: Auth.auth().currentUser!.email!).getDocuments { (snapshot, error) in
@@ -94,9 +90,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
-    
-    
+
        func makeAlert(title: String, message: String) {
            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
