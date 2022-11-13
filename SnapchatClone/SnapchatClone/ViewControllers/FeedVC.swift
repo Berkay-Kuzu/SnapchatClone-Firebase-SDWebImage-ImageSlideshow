@@ -55,7 +55,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                 } else {
                                                     let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue(), timeDifference: 24 - difference)
                                                         self.snapArray.append(snap)
-                                                }
                                             }
                                         }
                                     }
