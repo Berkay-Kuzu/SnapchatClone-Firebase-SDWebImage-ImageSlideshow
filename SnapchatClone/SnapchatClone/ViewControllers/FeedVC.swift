@@ -45,9 +45,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         if let username = document.get("snapOwner") as? String {
                             if let imageUrlArray = document.get("imageUrlArray") as? [String] {
                                 if let date = document.get("date") as? Timestamp {
-                                    
-                                    if let difference = Calendar.current.dateComponents([.hour], from: date.dateValue(), to: Date()).hour {
-                                             
+                                  
                                             if let difference = Calendar.current.dateComponents([.hour], from: date.dateValue(), to: Date()).hour {
                                                 if difference >= 24 {
                                                     self.fireStoreDatabase.collection("Snaps").document(documentId).delete {
